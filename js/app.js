@@ -57,9 +57,9 @@
   ]
 //Using Knockout to build Venues list and objects
 var Venues = function(info) {
-    this.title = ko.observable(info.title);
-    this.location = ko.observable(info.location);
-    this.category = ko.observable(info.category);
+    this.title = info.title;
+    this.location = info.location;
+    this.category = info.category;
     this.marker = info.marker;
 };
 //Instantiate map as variable
@@ -254,39 +254,32 @@ var ViewModel = function() {
             populateInfoWindow(this, infowindow);
         });
         self.venueList.push(new Venues(venue));
+        console.log(self.venueList())
     });
     //create currentLocation, inspired by currentCat
     this.currentLocation = ko.observable(this.venueList()[0]);
 
  // starts the process of category filtering
-    self.categorySelected = ko.observable('All');
+    self.categorySelected = ko.observableArray(['All', 'Bar', 'Gallery', 'Venue']);
 
     self.filteredLocations = ko.computed(function() {
-        var categorySelected = self.categorySelected().toLowerCase();
 
-   // sets functionality for 'All' category
-        if (categorySelected === 'All') {
-            self.venueList().forEach(function(venue) {
-                if (location.marker) {
-                    location.marker.setVisible(true);
-                }
-            });
-            return self.venueList();
-        }
+        var categoriesSelected = self.categorySelected();
 
    // Determines what happens whan category selected
     return ko.utils.arrayFilter(self.venueList(), function(venue) {
-        var category = venue.category().toLowerCase();
-        var match = category === categorySelected;
-     // Inspired by polygon functionality in Maps course materials
-        self.venueList().forEach(function(venue) {
-            if (location.category === categorySelected) {
-                venue.marker.setVisible(true);
-            } else {
-                venue.marker.setVisible(false);
-                infowindow.close();
+
+       var match = false;
+       if (categoriesSelected.indexOf('All') !== -1 ){
+         match = true;
+       } else {
+          categoriesSelected.forEach(function(cat) {
+            if (cat === venue.category ) {
+              match = true;
             }
-        });
+          })
+       }
+       venue.marker.setVisible(match)
         return match;
     });
  });
@@ -306,7 +299,7 @@ var ViewModel = function() {
 
  function setDefaultMarker() {
      self.venueList().forEach(function(venue) {
-         locationItem.marker.setIcon(defaultIcon);
+         venue.marker.setIcon(defaultIcon);
      });
     }
 
