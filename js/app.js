@@ -54,7 +54,7 @@
         lng: -81.711343
       }
     }
-  ]
+];
 //Using Knockout to build Venues list and objects
 var Venues = function(info) {
     this.title = info.title;
@@ -353,7 +353,7 @@ function initMap() {
             }
         ]
     }
-]
+];
     //build map object
     map = new google.maps.Map(document.getElementById('map'), {
         center: {
@@ -366,7 +366,7 @@ function initMap() {
       });
     infowindow = new google.maps.InfoWindow();
 
-    ko.applyBindings(new ViewModel())
+    ko.applyBindings(new ViewModel());
     }
 //Define ViewModel based on Google Maps course material and FourSquare API documentation
 var ViewModel = function() {
@@ -417,9 +417,9 @@ var ViewModel = function() {
             if (cat === venue.category ) {
               match = true;
             }
-          })
+        });
        }
-       venue.marker.setVisible(match)
+       venue.marker.setVisible(match);
         return match;
     });
  });
@@ -460,13 +460,11 @@ var ViewModel = function() {
          var url = data.response.venue.canonicalUrl;
 
          marker.setIcon(highlightedIcon);
-         infowindow.setContent('<div"><strong><a href="' + url + '">' + marker.title
-         +'</a></strong></div><br><div><br><br>' + address + '<br>' + city + ', ' +
-         state + '<br>' + phone + '</div>');
+         infowindow.setContent('<div"><strong><a href="' + url + '">' + marker.title +'</a></strong></div><br><div><br><br>' + address + '<br>' + city + ', '+ state + '<br>' + phone + '</div>');
          infowindow.open(map, marker);
 
         }).fail(function () {
-            window.alert('Error in FourSquare API call! Please Reload')
+            window.alert('Error in FourSquare API call! Please Reload');
         });
     }
 
