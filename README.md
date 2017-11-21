@@ -25,5 +25,7 @@ Assistance and feedback on the code was provided by Sarah Maris
 
 #### Installation
 To install and run the project complete the following steps:
+
 `git clone https://github.com/tpierag1/neighborhood-map.git`
+
 Then load index.html in your browser of choice
