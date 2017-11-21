@@ -1,7 +1,7 @@
 # Neighborhood Map
 ### A Map of Some Independent Music and Art Venues on the West Side of Cleveland
 
-####Project Description
+#### Project Description
 This project integrates functionality from the Google Maps API
 with the FourSquare API, data binding from within
 KnockoutJS and stylistic elements from Bootstrap to create
@@ -25,5 +25,5 @@ Assistance and feedback on the code was provided by Sarah Maris
 
 #### Installation
 To install and run the project complete the following steps:
-`git clone https://github.com/tpierag1/item-catalog.git`
+`git clone https://github.com/tpierag1/neighborhood-map.git`
 Then load index.html in your browser of choice
