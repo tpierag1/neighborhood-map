@@ -20,6 +20,7 @@ This project involves functionality and code adapted from the following sources
 * Google Maps API and Documentation
 * FourSquare API and documentation
 * Udacity Student Discussion Forums
+* Start Bootstrap Simple Sidebar
 
 Assistance and feedback on the code was provided by Sarah Maris
 

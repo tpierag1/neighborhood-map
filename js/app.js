@@ -474,3 +474,8 @@ var ViewModel = function() {
  };
 
 };
+googleError = function googleError() {
+    alert(
+        'Google Maps Error. Please try again.'
+    );
+};
